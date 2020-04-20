@@ -56,6 +56,10 @@ export default {
         entity_name: '',
         employee_position: '',
         gender: '',
+        age: '',
+        employment_status: '',
+        attendance_status: '',
+        education_status: '',
       },
     }
   },

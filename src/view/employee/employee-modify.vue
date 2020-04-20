@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <div class="title">
-      <span>修改员工信息</span> <span class="back" @click="back"> <i class="iconfont icon-fanhui"></i> 返回 </span>
+      <span>修改员工信息</span>
+      <span class="back" @click="back"> <i class="iconfont icon-fanhui"></i> 返回 </span>
     </div>
     <el-divider></el-divider>
     <div class="wrap">
@@ -43,11 +44,11 @@
 </template>
 
 <script>
-import legalentity from '@/model/legalentity'
+import employee from '@/model/employee'
 
 export default {
   props: {
-    editLegalentityID: {
+    editEmployeeID: {
       type: Number,
     },
   },
@@ -55,19 +56,26 @@ export default {
     return {
       loading: false,
       form: {
-        entity_code: '',
+        employee_id: '',
+        employee_name: '',
         entity_name: '',
+        employee_position: '',
+        gender: '',
+        age: '',
+        employment_status: '',
+        attendance_status: '',
+        education_status: '',
       },
     }
   },
   async mounted() {
     this.loading = true
-    this.form = await legalentity.getLegalentity(this.editLegalentityID)
+    this.form = await employee.getEmployee(this.editEmployeeID)
     this.loading = false
   },
   methods: {
     async submitForm() {
-      const res = await legalentity.editLegalentity(this.editLegalentityID, this.form)
+      const res = await employee.editEmployee(this.editEmployeeID, this.form)
       if (res.code < window.MAX_SUCCESS_CODE) {
         this.$message.success(`${res.message}`)
         this.$emit('editClose')
