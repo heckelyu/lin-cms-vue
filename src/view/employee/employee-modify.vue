@@ -36,6 +36,11 @@
             <el-form-item label="教育水平" prop="education_status">
               <el-input size="medium" v-model="form.education_status" placeholder="请填写员工教育水平"></el-input>
             </el-form-item>
+
+            <el-form-item class="submit">
+              <el-button type="primary" @click="submitForm('form')">保 存</el-button>
+              <el-button @click="resetForm('form')">重 置</el-button>
+            </el-form-item>
           </el-form>
         </el-col>
       </el-row>

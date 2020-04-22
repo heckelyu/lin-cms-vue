@@ -14,6 +14,11 @@
             <el-form-item label="单位名称" prop="entity_name">
               <el-input size="medium" v-model="form.entity_name" placeholder="请填写单位名称"></el-input>
             </el-form-item>
+
+            <el-form-item class="submit">
+              <el-button type="primary" @click="submitForm('form')">保 存</el-button>
+              <el-button @click="resetForm('form')">重 置</el-button>
+            </el-form-item>
           </el-form>
         </el-col>
       </el-row>

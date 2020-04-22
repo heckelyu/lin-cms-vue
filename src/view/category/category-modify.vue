@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <div class="title">
-      <span>修改实物类别</span> <span class="back" @click="back"> <i class="iconfont icon-fanhui"></i> 返回 </span>
+      <span>修改实物类别</span>
+      <span class="back" @click="back"> <i class="iconfont icon-fanhui"></i> 返回 </span>
     </div>
     <el-divider></el-divider>
     <div class="wrap">
@@ -22,6 +23,11 @@
             </el-form-item>
             <el-form-item label="类别简介" prop="note">
               <el-input size="medium" v-model="form.note" placeholder="请填写类别简介"></el-input>
+            </el-form-item>
+
+            <el-form-item class="submit">
+              <el-button type="primary" @click="submitForm('form')">保 存</el-button>
+              <el-button @click="resetForm('form')">重 置</el-button>
             </el-form-item>
           </el-form>
         </el-col>
