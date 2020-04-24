@@ -4,6 +4,7 @@ import legalentityConfig from './legalentity'
 import employeeConfig from './employee'
 import categoryConfig from './category'
 import assetbasicConfig from './assetbasic'
+import checkrecordConfig from './checkrecord'
 import pluginsConfig from './plugin'
 import Utils from '@/lin/util/util'
 
@@ -50,6 +51,7 @@ let homeRouter = [
   },
   bookConfig,
   assetbasicConfig,
+  checkrecordConfig,
   legalentityConfig,
   employeeConfig,
   categoryConfig,

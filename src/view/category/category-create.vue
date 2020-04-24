@@ -20,6 +20,7 @@
             <el-form-item label="类别简介" prop="note">
               <el-input size="medium" v-model="form.note" placeholder="请填写类别简介"></el-input>
             </el-form-item>
+
             <el-form-item class="submit">
               <el-button type="primary" @click="submitForm('form')">保 存</el-button>
               <el-button @click="resetForm('form')">重 置</el-button>

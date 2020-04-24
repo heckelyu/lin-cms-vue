@@ -51,8 +51,15 @@ export default {
   data() {
     return {
       form: {
-        entity_code: '',
-        entity_name: '',
+        asset_code: '',
+        asset_name: '',
+        asset_model: '',
+        asset_unit: '',
+        asset_quantity: '',
+        asset_category: '',
+        asset_status: '',
+        asset_owner: '',
+        asset_entity: '',
       },
     }
   },
