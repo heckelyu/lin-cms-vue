@@ -3,7 +3,7 @@ import bookConfig from './book' // 引入图书管理路由文件
 import legalentityConfig from './legalentity'
 import employeeConfig from './employee'
 import categoryConfig from './category'
-import assetbasicConfig from './assetbasic'
+import assetConfig from './asset'
 import checkrecordConfig from './checkrecord'
 import pluginsConfig from './plugin'
 import Utils from '@/lin/util/util'
@@ -50,7 +50,7 @@ let homeRouter = [
     icon: 'iconfont icon-rizhiguanli',
   },
   bookConfig,
-  assetbasicConfig,
+  assetConfig,
   checkrecordConfig,
   legalentityConfig,
   employeeConfig,

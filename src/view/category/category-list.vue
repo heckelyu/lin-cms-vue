@@ -2,7 +2,7 @@
   <div>
     <!-- 列表页面 -->
     <div class="container" v-if="!showEdit">
-      <div class="header"><div class="title">实物类别列表</div></div>
+      <div class="header"><div class="title">类别列表</div></div>
       <!-- 表格 -->
       <lin-table
         :tableColumn="tableColumn"
@@ -33,11 +33,13 @@ export default {
   data() {
     return {
       tableColumn: [
-        { prop: 'code', label: '类别代码' },
-        { prop: 'name', label: '类别名称' },
-        { prop: 'value', label: '类别价值' },
-        { prop: 'flag', label: '类别标记' },
-        { prop: 'note', label: '类别简介' },
+        { prop: 'category_type', label: '分类类型' },
+        { prop: 'category_name', label: '类型名称' },
+        { prop: 'sub_code', label: '分类编码' },
+        { prop: 'sub_name', label: '分类名称' },
+        { prop: 'sub_value', label: '分类值' },
+        { prop: 'sub_flag', label: '类别标记' },
+        { prop: 'sub_note', label: '类别简介' },
       ],
       tableData: [],
       operate: [],
@@ -54,7 +56,7 @@ export default {
         name: '删除',
         func: 'handleDelete',
         type: 'danger',
-        permission: '删除实物类别',
+        permission: '删除类别',
       },
     ]
     this.loading = false
@@ -76,7 +78,7 @@ export default {
       this.editCategoryID = val.row.id
     },
     handleDelete(val) {
-      this.$confirm('此操作将永久删除该实物类别, 是否继续?', '提示', {
+      this.$confirm('此操作将永久删除该类别, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning',

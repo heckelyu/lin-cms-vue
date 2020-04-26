@@ -1,7 +1,7 @@
 const categoryRouter = {
   route: null,
   name: null,
-  title: '实物类别管理',
+  title: '类别管理',
   type: 'folder', // 类型: folder, tab, view
   icon: 'iconfont icon-tushuguanli',
   filePath: 'view/category/', // 文件路径

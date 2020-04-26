@@ -9,20 +9,26 @@
       <el-row>
         <el-col :lg="16" :md="20" :sm="24" :xs="24">
           <el-form :model="form" status-icon ref="form" label-width="100px" v-loading="loading" @submit.native.prevent>
-            <el-form-item label="类别代码" prop="code">
-              <el-input size="medium" v-model="form.code" placeholder="请填写类别代码"></el-input>
+            <el-form-item label="类型编码" prop="category_type">
+              <el-input size="medium" v-model="form.category_type" placeholder="请填写分类类型编码"></el-input>
             </el-form-item>
-            <el-form-item label="类别名称" prop="name">
-              <el-input size="medium" v-model="form.name" placeholder="请填写类别名称"></el-input>
+            <el-form-item label="类型名称" prop="category_name">
+              <el-input size="medium" v-model="form.category_name" placeholder="请填写分类类型名称"></el-input>
             </el-form-item>
-            <el-form-item label="类别价值" prop="value">
-              <el-input size="medium" v-model="form.value" placeholder="请填写类别价值"></el-input>
+            <el-form-item label="分类编码" prop="sub_code">
+              <el-input size="medium" v-model="form.sub_code" placeholder="请填写分类编码"></el-input>
             </el-form-item>
-            <el-form-item label="类别标记" prop="flag">
-              <el-input size="medium" v-model="form.flag" placeholder="请填写类别标记"></el-input>
+            <el-form-item label="分类名称" prop="sub_name">
+              <el-input size="medium" v-model="form.sub_name" placeholder="请填写分类名称"></el-input>
             </el-form-item>
-            <el-form-item label="类别简介" prop="note">
-              <el-input size="medium" v-model="form.note" placeholder="请填写类别简介"></el-input>
+            <el-form-item label="分类值" prop="sub_value">
+              <el-input size="medium" v-model="form.sub_value" placeholder="请填写分类值"></el-input>
+            </el-form-item>
+            <el-form-item label="分类标记" prop="sub_flag">
+              <el-input size="medium" v-model="form.sub_flag" placeholder="请填写分类标记"></el-input>
+            </el-form-item>
+            <el-form-item label="类别简介" prop="sub_note">
+              <el-input size="medium" v-model="form.sub_note" placeholder="请填写类别简介"></el-input>
             </el-form-item>
 
             <el-form-item class="submit">
@@ -49,11 +55,13 @@ export default {
     return {
       loading: false,
       form: {
-        code: '',
-        name: '',
-        value: '',
-        flag: '',
-        note: '',
+        category_type: '',
+        category_name: '',
+        sub_code: '',
+        sub_name: '',
+        sub_value: '',
+        sub_flag: '',
+        sub_note: '',
       },
     }
   },

@@ -16,19 +16,19 @@
     </div>
 
     <!-- 编辑页面 -->
-    <assetbasic-modify v-else @editClose="editClose" :editAssetbasicID="editAssetbasicID"></assetbasic-modify>
+    <asset-modify v-else @editClose="editClose" :editAssetID="editAssetID"></asset-modify>
   </div>
 </template>
 
 <script>
-import assetbasic from '@/model/assetbasic'
+import asset from '@/model/asset'
 import LinTable from '@/component/base/table/lin-table'
-import AssetbasicModify from './assetbasic-modify'
+import AssetModify from './asset-modify'
 
 export default {
   components: {
     LinTable,
-    AssetbasicModify,
+    AssetModify,
   },
   data() {
     return {
@@ -38,20 +38,31 @@ export default {
         { prop: 'asset_model', label: '资产型号' },
         { prop: 'asset_unit', label: '资产单位' },
         { prop: 'asset_quantity', label: '资产数量' },
-        { prop: 'asset_category', label: '资产类别' },
-        { prop: 'asset_status', label: '资产状态' },
+        { prop: 'capital_category_subcode', label: '资产分类' },
+        { prop: 'material_category_subcode', label: '实物分类' },
+        { prop: 'expense_category_subcode', label: '费用类别' },
+        { prop: 'usage_category_subcode', label: '使用状态' },
+        { prop: 'customized_category_1_type', label: '自定义分类1' },
+        { prop: 'customized_category_1_subcode', label: '自定义类别1' },
+        { prop: 'asset_purchase_date', label: '购置时间' },
         { prop: 'asset_owner', label: '资产所有人' },
-        { prop: 'asset_entity', label: '资产所有单位' },
+        { prop: 'asset_legal_entity', label: '产权单位' },
+        { prop: 'asset_owner_entity', label: '使用单位' },
+        { prop: 'asset_owner_dept', label: '使用部门' },
+        { prop: 'asset_location', label: '资产位置' },
+        { prop: 'asset_note', label: '资产描述' },
+        { prop: 'asset_image_id', label: '资产图片' },
       ],
       tableData: [],
       operate: [],
       showEdit: false,
-      editAssetbasicID: 1,
+      editAssetID: 1,
     }
   },
+
   async created() {
     this.loading = true
-    await this.getAssetbasics()
+    await this.getAssets()
     this.operate = [
       { name: '编辑', func: 'handleEdit', type: 'primary' },
       {
@@ -64,10 +75,10 @@ export default {
     this.loading = false
   },
   methods: {
-    async getAssetbasics() {
+    async getAssets() {
       try {
-        const assetbasics = await assetbasic.getAssetbasics()
-        this.tableData = assetbasics
+        const assets = await asset.getAssets()
+        this.tableData = assets
       } catch (error) {
         if (error.code === 10020) {
           this.tableData = []
@@ -77,7 +88,7 @@ export default {
     handleEdit(val) {
       console.log('val', val)
       this.showEdit = true
-      this.editAssetbasicID = val.row.id
+      this.editAssetID = val.row.id
     },
     handleDelete(val) {
       this.$confirm('此操作将永久删除该资产条目, 是否继续?', '提示', {
@@ -85,9 +96,9 @@ export default {
         cancelButtonText: '取消',
         type: 'warning',
       }).then(async () => {
-        const res = await assetbasic.delectAssetbasic(val.row.id)
+        const res = await asset.delectAsset(val.row.id)
         if (res.code < window.MAX_SUCCESS_CODE) {
-          this.getAssetbasics()
+          this.getAssets()
           this.$message({
             type: 'success',
             message: `${res.message}`,
@@ -98,7 +109,7 @@ export default {
     rowClick() {},
     editClose() {
       this.showEdit = false
-      this.getAssetbasics()
+      this.getAssets()
     },
   },
 }
