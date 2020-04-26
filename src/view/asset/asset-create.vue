@@ -20,13 +20,18 @@
             <el-form-item label="资产数量" prop="asset_quantity">
               <el-input size="medium" v-model="form.asset_quantity" placeholder="请填写资产数量"></el-input>
             </el-form-item>
+
             <el-form-item label="资产分类" prop="capital_category_subcode">
-              <el-input
-                size="medium"
-                v-model="form.capital_category_subcode"
-                placeholder="请填写资产分类类别"
-              ></el-input>
+              <el-select size="medium" v-model="form.capital_category_subcode" placeholder="请选择资产分类">
+                <el-option
+                  v-for="item in capital_category_data"
+                  :key="item.sub_code"
+                  :label="item.sub_name"
+                  :value="item.sub_code"
+                ></el-option>
+              </el-select>
             </el-form-item>
+
             <el-form-item label="实物分类" prop="material_category_subcode">
               <el-input
                 size="medium"
@@ -102,6 +107,7 @@
 
 <script>
 import asset from '@/model/asset'
+import category from '@/model/category'
 import legalentity from '@/model/legalentity'
 
 export default {
@@ -128,13 +134,15 @@ export default {
         asset_note: '',
         asset_image_id: '',
       },
+      capital_category_data: [],
       legalentity_data: [],
     }
   },
 
   async created() {
     await this.getLegalentitys()
-    console.log(this.legalentity_data)
+    await this.getCategoryByType()
+    console.log(this.capital_category_data)
   },
   methods: {
     async getLegalentitys() {
@@ -144,6 +152,17 @@ export default {
       } catch (error) {
         if (error.code === 10020) {
           this.legalentity_data = []
+        }
+      }
+    },
+
+    async getCategoryByType() {
+      try {
+        const categorys = await category.getCategoryByType('Capital')
+        this.capital_category_data = categorys
+      } catch (error) {
+        if (error.code === 10020) {
+          this.capital_category_data = []
         }
       }
     },

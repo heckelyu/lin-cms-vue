@@ -22,6 +22,11 @@ class Category {
     return res
   }
 
+  async getCategoryByType(type) {
+    const res = await get(`v1/category/type/${type}`)
+    return res
+  }
+
   async editCategory(id, info) {
     const res = await put(`v1/category/${id}`, info)
     return res
