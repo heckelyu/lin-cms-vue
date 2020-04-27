@@ -141,8 +141,7 @@ export default {
 
   async created() {
     await this.getLegalentitys()
-    await this.getCategoryByType()
-    console.log(this.capital_category_data)
+    this.capital_category_data = await this.getCategoryByType('Capital')
   },
   methods: {
     async getLegalentitys() {
@@ -156,15 +155,16 @@ export default {
       }
     },
 
-    async getCategoryByType() {
+    async getCategoryByType(qType) {
+      let categorys = []
       try {
-        const categorys = await category.getCategoryByType('Capital')
-        this.capital_category_data = categorys
+        categorys = await category.getCategoryByType(qType)
       } catch (error) {
         if (error.code === 10020) {
-          this.capital_category_data = []
+          categorys = []
         }
       }
+      return categorys
     },
 
     async submitForm(formName) {
