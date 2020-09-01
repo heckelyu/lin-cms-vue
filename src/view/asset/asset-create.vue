@@ -85,13 +85,72 @@
               <el-input size="medium" v-model="form.asset_owner_dept" placeholder="请填写资产使用部门"></el-input>
             </el-form-item>
             <el-form-item label="资产位置" prop="asset_location">
-              <el-input size="medium" v-model="form.asset_location" placeholder="请填写资产资产位置"></el-input>
+              <el-input size="medium" v-model="form.asset_location" placeholder="请填写资产位置"></el-input>
             </el-form-item>
             <el-form-item label="资产描述" prop="asset_note">
               <el-input size="medium" v-model="form.asset_note" placeholder="请填写资产描述"></el-input>
             </el-form-item>
             <el-form-item label="资产图片" prop="asset_image_id">
               <el-input size="medium" v-model="form.asset_image_id" placeholder="请填写资产图片"></el-input>
+            </el-form-item>
+            <el-form-item label="凭证编号" prop="asset_proofs_code">
+              <el-input size="medium" v-model="form.asset_proofs_code" placeholder="请填写资产凭证编号"></el-input>
+            </el-form-item>
+            <el-form-item label="资产原值" prop="asset_original_value">
+              <el-input size="medium" v-model="form.asset_original_value" placeholder="请填写资产原值"></el-input>
+            </el-form-item>
+            <el-form-item label="资产净值" prop="asset_net_value">
+              <el-input size="medium" v-model="form.asset_net_value" placeholder="请填写资产净值"></el-input>
+            </el-form-item>
+            <el-form-item label="当年折旧" prop="asset_depreciation_this_year">
+              <el-input
+                size="medium"
+                v-model="form.asset_depreciation_this_year"
+                placeholder="请填写资产当年折旧"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="当月折旧" prop="asset_depreciation_this_month">
+              <el-input
+                size="medium"
+                v-model="form.asset_depreciation_this_month"
+                placeholder="请填写资产当月折旧"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="残值率" prop="asset_residual_value">
+              <el-input size="medium" v-model="form.asset_residual_value" placeholder="请填写资产残值率"></el-input>
+            </el-form-item>
+            <el-form-item label="入账日期" prop="asset_account_entry_date">
+              <el-input
+                size="medium"
+                v-model="form.asset_account_entry_date"
+                placeholder="请填写资产入账日期"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="折旧年限" prop="asset_depreciation_years">
+              <el-input
+                size="medium"
+                v-model="form.asset_depreciation_years"
+                placeholder="请填写资产折旧年限"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="已折旧月数" prop="asset_depreciated_months">
+              <el-input
+                size="medium"
+                v-model="form.asset_depreciated_months"
+                placeholder="请填写资产已折旧月数"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="核销状态" prop="asset_write_off_status">
+              <el-input size="medium" v-model="form.asset_write_off_status" placeholder="请填写资产核销状态"></el-input>
+            </el-form-item>
+            <el-form-item label="核销原因" prop="asset_write_off_reason">
+              <el-input size="medium" v-model="form.asset_write_off_reason" placeholder="请填写资产核销原因"></el-input>
+            </el-form-item>
+            <el-form-item label="处置说明" prop="asset_write_off_note">
+              <el-input size="medium" v-model="form.asset_write_off_note" placeholder="请填写资产处置说明"></el-input>
+            </el-form-item>
+            <el-form-item label="成套设备" prop="asset_is_subitem">
+              <el-input size="medium" v-model="form.asset_is_subitem" placeholder="请填写资产成套设备代码"></el-input>
             </el-form-item>
 
             <el-form-item class="submit">
@@ -133,6 +192,19 @@ export default {
         asset_location: '',
         asset_note: '',
         asset_image_id: '',
+        asset_proofs_code: '',
+        asset_original_value: '',
+        asset_net_value: '',
+        asset_depreciation_this_year: '',
+        asset_depreciation_this_month: '',
+        asset_residual_value: '',
+        asset_account_entry_date: '',
+        asset_depreciation_years: '',
+        asset_depreciated_months: '',
+        asset_write_off_status: '',
+        asset_write_off_reason: '',
+        asset_write_off_note: '',
+        asset_is_subitem: '',
       },
       capital_category_data: [],
       legalentity_data: [],
@@ -201,6 +273,10 @@ export default {
 
   .wrap {
     padding: 20px;
+  }
+
+  .el-input {
+    width: 300px;
   }
 
   .submit {
